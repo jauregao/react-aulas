@@ -1,13 +1,46 @@
-export default function ProductCard ({ productData }) {
-  return (
-    <div className="">
-      <h3>{productData.categoria}</h3>
-      <span>{productData.nome}</span>
-      <p>{productData.descricao}</p>
-      {
-        productData.vegano ? <span>Produto Vegano</span> :
-        <span>Produto Não Vegano</span> 
+import { useEffect, useState } from "react"
+
+export default function ProductCard() {
+    const [usuarios, setUsuarios] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [id, setId] = useState(null);
+
+    useEffect( () => {
+      carregarUsuarios();
+    }, [ id ] );
+
+    async function carregarUsuarios() {
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        const data = await res.json();
+        setUsuarios(data);
+        setId(id);
+      } catch (error) {
+        setError("Erro ao buscar dados");
+      } finally {
+        setLoading(false);
       }
-    </div>
+    }
+
+  return (
+    <>
+      {
+        (!loading && !error) ? usuarios.map( (usuario) => {
+          return (
+            <div key={usuario.id}>
+              <p>Id: {usuario.id}</p>
+              <p>Nome: {usuario.name}</p>
+              <p>Username: {usuario.username}</p>
+              <p>Cidade: {usuario.address.city}</p>
+            </div>
+          )
+        }) :
+          <p>{error}</p>
+      }
+      {
+        !error && loading && <p>Carregando......</p>
+      }
+    </>
   )
 }
