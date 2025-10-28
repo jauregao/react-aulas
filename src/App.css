@@ -1,44 +1,81 @@
-.App {
-  text-align: center;
+.posts-list {
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.post-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.post-card h3 {
+  margin: 0 0 10px 0;
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.post-card p {
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 15px 0;
+}
+
+.post-actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: #0066cc;
   color: white;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background: #0052a3;
 }
 
-.input-erro {
-  border: 1px solid red;
-  background: #ffe5e5;
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
 
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form div {
+  margin-bottom: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.erro {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }

@@ -4,18 +4,16 @@ export default function ProductCard() {
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [id, setId] = useState(null);
 
     useEffect( () => {
       carregarUsuarios();
-    }, [ id ] );
+    }, []);
 
     async function carregarUsuarios() {
       try {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
         setUsuarios(data);
-        setId(id);
       } catch (error) {
         setError("Erro ao buscar dados");
       } finally {
